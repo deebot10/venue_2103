@@ -13,17 +13,26 @@ class Venue
     @patrons.push(customer)
   end
 
-  # def yell_at_patrons
-  #
-  #   return @patrons.upcase
-  #
-  # end
+  def yell_at_patrons
+    yells = []
+    @patrons.each do |patron|
+      yells << patron.upcase
+    end
+    yells
+  end
 
   def over_capacity?
-     return false if @patrons.length == 3
-     true
+     if @patrons.length >= @capacity
+       true
+     else
+       false
+     end
   end
 
   def kick_out
-  end 
+    until self.over_capacity? == false do
+      @patrons.pop
+      require "pry"; binding.pry
+    end
+  end
 end
