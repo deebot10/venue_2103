@@ -32,7 +32,6 @@ class Venue
   def kick_out
     until self.over_capacity? == false do
       @patrons.pop
-      require "pry"; binding.pry
     end
   end
 end
